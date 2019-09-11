@@ -1,5 +1,6 @@
 package uph.tpsi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,5 +34,6 @@ public class User
         private String password;
 
         @OneToMany(mappedBy = "user")
+        @JsonIgnore
         private Set<Car> cars;
 }

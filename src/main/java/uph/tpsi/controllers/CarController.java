@@ -1,11 +1,33 @@
 package uph.tpsi.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import uph.tpsi.models.Car;
+import uph.tpsi.services.CarService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/car")
+@RequestMapping ("/api/car")
 public class CarController
 {
+        private final CarService carService;
 
+        @Autowired
+        public CarController ( CarService carService )
+        {
+                this.carService = carService;
+        }
+
+        @GetMapping
+        public List<Car> findCarsByUser ()
+        {
+                return carService.findByUser();
+        }
+
+        @PostMapping
+        public Car create ( @RequestBody Car car )
+        {
+                return carService.create( car );
+        }
 }
