@@ -13,9 +13,6 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  fetchAdminRole() {
-    this.http.get<boolean>(this.url + 'admin').subscribe(res => localStorage.setItem('adminRole', String(res)));
-  }
 
   getUsername() {
     return localStorage.getItem('username');
@@ -37,10 +34,5 @@ export class UserService {
   isAuthenticated() {
     return this.getToken() !== null && this.getToken() !== '';
   }
-
-  hasAdminRole() {
-    return localStorage.getItem('adminRole') !== null && localStorage.getItem('adminRole') === 'true';
-  }
-
 
 }

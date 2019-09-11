@@ -10,6 +10,7 @@ import uph.tpsi.models.User;
 import uph.tpsi.repositories.UserRepository;
 
 import java.util.Collections;
+import java.util.HashSet;
 
 @Service
 public class UserServiceImpl implements UserService
@@ -28,8 +29,8 @@ public class UserServiceImpl implements UserService
         @Override
         public UserDetails loadUserByUsername ( String s ) throws UsernameNotFoundException
         {
-                User user = userRepository.findByUsername(s);
-                if(user == null)
+                User user = userRepository.findByUsername( s );
+                if ( user == null )
                         throw new UsernameNotFoundException( "User not found" );
 
                 return new org.springframework.security.core.userdetails.User(
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService
         public User create ( User user )
         {
                 user.setPassword( encoder.encode( user.getPassword() ) );
-
+                user.setCars( new HashSet<>() );
                 return userRepository.save( user );
         }
 
