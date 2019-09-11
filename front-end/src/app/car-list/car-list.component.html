@@ -9,6 +9,7 @@
                 <th scope="col">Numer rejstracyjny</th>
                 <th scope="col">Przebieg</th>
                 <th scope="col">Rodzaj</th>
+                <th scope="col">Szczegóły</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
                 <td>{{ car.registerNumber }}</td>
                 <td>{{ car.mileage }}</td>
                 <td>{{ car.carType.name }}</td>
+                <td><button [routerLink]="['/cars', car.id, 'details']" class="btn btn-success">Szczegóły</button></td>
             </tr>
         </tbody>
     </table>

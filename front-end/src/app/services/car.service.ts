@@ -20,7 +20,12 @@ export class CarService {
     return this.http.post<Car>(this.url, car);
   }
 
+  findOneById(id: number) {
+    return this.http.get<Car>(this.url + 'one/' + id);
+  }
+  // typy pojazdów
   findCartTypes() {
     return this.http.get<CarType[]>(this.url + 'types');
   }
+
 }

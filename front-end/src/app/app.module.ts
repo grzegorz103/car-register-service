@@ -13,6 +13,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HttpRequestInterceptor } from './security/request-interceptor';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarAddComponent } from './car-add/car-add.component';
+import { CarDetailsComponent } from './car-details/car-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CarAddComponent } from './car-add/car-add.component';
     IndexComponent,
     FooterComponent,
     CarListComponent,
-    CarAddComponent
+    CarAddComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,

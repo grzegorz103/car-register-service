@@ -19,14 +19,14 @@ public class CarServiceImpl implements CarService
 
         private final UserRepository userRepository;
 
-        @Autowired
-        private CarTypeRepository carTypeRepository;
+        private final CarTypeRepository carTypeRepository;
 
         @Autowired
-        public CarServiceImpl ( CarRepository carRepository, UserRepository userRepository )
+        public CarServiceImpl ( CarRepository carRepository, UserRepository userRepository, CarTypeRepository carTypeRepository )
         {
                 this.carRepository = carRepository;
                 this.userRepository = userRepository;
+                this.carTypeRepository = carTypeRepository;
         }
 
         @Override
@@ -48,5 +48,11 @@ public class CarServiceImpl implements CarService
         public List<CarType> findAllCartTypes ()
         {
                 return carTypeRepository.findAll();
+        }
+
+        @Override
+        public Car findById ( Long id )
+        {
+                return carRepository.findById( id ).orElseThrow( ()->new RuntimeException( "Not found" ) );
         }
 }
