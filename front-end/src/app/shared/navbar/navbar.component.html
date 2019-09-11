@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">Index</a>
+    <a class="navbar-brand" routerLink="/">Strona główna</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,14 +9,15 @@
       <ul class="navbar-nav">
 
         <li class="nav-item active">
-          <a *ngIf="userService?.isAuthenticated() && !userService?.hasAdminRole()" class="nav-link"
-            routerLink="visits/my">Tylko dla zwyklego usera<span class="sr-only">(current)</span></a>
+          <a *ngIf="userService?.isAuthenticated()" class="nav-link"
+            routerLink="cars/my">Moje samochody<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a *ngIf="userService?.isAuthenticated() && userService?.hasAdminRole()" class="nav-link"
-            routerLink="visits/new/form">Tylko dla admina</a>
+     
+        <li class="nav-item active">
+          <a *ngIf="userService?.isAuthenticated()" class="nav-link"
+            routerLink="cars/add">Rejestruj samochód<span class="sr-only">(current)</span></a>
         </li>
-
+     
       </ul>
 
       <ul class="navbar-nav ml-auto">

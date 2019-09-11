@@ -3,10 +3,11 @@ package uph.tpsi.services;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import uph.tpsi.models.Car;
+import uph.tpsi.models.CarType;
 import uph.tpsi.repositories.CarRepository;
+import uph.tpsi.repositories.CarTypeRepository;
 import uph.tpsi.repositories.UserRepository;
 
 import java.util.List;
@@ -17,6 +18,9 @@ public class CarServiceImpl implements CarService
         private final CarRepository carRepository;
 
         private final UserRepository userRepository;
+
+        @Autowired
+        private CarTypeRepository carTypeRepository;
 
         @Autowired
         public CarServiceImpl ( CarRepository carRepository, UserRepository userRepository )
@@ -38,5 +42,11 @@ public class CarServiceImpl implements CarService
                 car.setUser( userRepository.findByUsername( SecurityContextHolder.getContext().getAuthentication().getName() ) );
                 car.setRegisterNumber( RandomStringUtils.randomAlphabetic( 2 ).toUpperCase() + RandomStringUtils.randomAlphanumeric( 5 ).toUpperCase() );
                 return carRepository.save( car );
+        }
+
+        @Override
+        public List<CarType> findAllCartTypes ()
+        {
+                return carTypeRepository.findAll();
         }
 }

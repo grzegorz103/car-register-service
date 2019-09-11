@@ -11,6 +11,8 @@ import { UserService } from './services/user.service';
 import { IndexComponent } from './shared/index/index.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HttpRequestInterceptor } from './security/request-interceptor';
+import { CarListComponent } from './car-list/car-list.component';
+import { CarAddComponent } from './car-add/car-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HttpRequestInterceptor } from './security/request-interceptor';
     LoginComponent,
     RegisterComponent,
     IndexComponent,
-    FooterComponent
+    FooterComponent,
+    CarListComponent,
+    CarAddComponent
   ],
   imports: [
     BrowserModule,

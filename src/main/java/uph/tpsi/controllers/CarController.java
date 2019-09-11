@@ -3,6 +3,7 @@ package uph.tpsi.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uph.tpsi.models.Car;
+import uph.tpsi.models.CarType;
 import uph.tpsi.services.CarService;
 
 import java.util.List;
@@ -29,5 +30,11 @@ public class CarController
         public Car create ( @RequestBody Car car )
         {
                 return carService.create( car );
+        }
+
+        @GetMapping ("/types")
+        public List<CarType> findCartTypes ()
+        {
+                return carService.findAllCartTypes();
         }
 }
