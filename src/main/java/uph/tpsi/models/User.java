@@ -31,4 +31,7 @@ public class User
         @NotEmpty
         @Length (min = 2, max = 100)
         private String password;
+
+        @OneToMany(mappedBy = "user")
+        private Set<Car> cars;
 }

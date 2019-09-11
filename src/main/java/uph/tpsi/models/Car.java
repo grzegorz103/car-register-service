@@ -32,4 +32,8 @@ public class Car
         @ManyToOne
         @JoinColumn (name = "cartype_id", nullable = false)
         private CarType carType;
+
+        @ManyToOne
+        @JoinColumn (name = "user_id", nullable = false)
+        private User user;
 }
