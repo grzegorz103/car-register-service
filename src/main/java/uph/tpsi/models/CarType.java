@@ -1,10 +1,26 @@
 package uph.tpsi.models;
 
-@Entity
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Table(name="car_types")
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table (name="car_types")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarType
 {
         @Id
-        @G
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
+
+        @Column(name="name")
+        private String name;
+
+        @OneToMany(mappedBy = "carType")
+        private Set<Car> cars;
 }

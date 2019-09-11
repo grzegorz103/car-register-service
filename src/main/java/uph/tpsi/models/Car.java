@@ -1,5 +1,12 @@
 package uph.tpsi.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
 @Entity
 @Table (name = "users")
 @Data
@@ -8,4 +15,21 @@ package uph.tpsi.models;
 @Builder
 public class Car
 {
+        @Id
+        @GeneratedValue (strategy = GenerationType.AUTO)
+        private Long id;
+
+        private String brand;
+
+        private String model;
+
+        private Integer year;
+
+        private String registerNumber;
+
+        private Integer mileage;
+
+        @ManyToOne
+        @JoinColumn (name = "cartype_id", nullable = false)
+        private CarType carType;
 }

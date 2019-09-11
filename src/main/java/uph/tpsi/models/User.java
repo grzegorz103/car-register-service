@@ -31,25 +31,4 @@ public class User
         @NotEmpty
         @Length (min = 2, max = 100)
         private String password;
-
-        @Column (name = "pesel")
-        @NotEmpty
-        private String pesel;
-
-        @Column (name = "name")
-        @NotEmpty
-        private String name;
-
-        @Column (name = "surname")
-        @NotEmpty
-        private String surname;
-
-        @ManyToMany (fetch = FetchType.EAGER)
-        @JoinTable (name = "users_roles",
-                joinColumns = @JoinColumn (name = "user_id"),
-                inverseJoinColumns = @JoinColumn (name = "role_id"))
-        private Set<UserType> userRoles;
-
-
-
 }
